@@ -1,0 +1,34 @@
+generator client { provider = "prisma-client-js" }
+
+// Dev uses SQLite. For production switch provider to "postgresql" (Neon, Supabase...).
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Brand {
+  id              String    @id @default(cuid())
+  slug            String    @unique
+  name            String
+  story           String
+  city            String
+  logoUrl         String?
+  stripeAccountId String?   // Stripe Connect account (acct_...) once the brand is onboarded
+  products        Product[]
+  createdAt       DateTime  @default(now())
+}
+
+model Product {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  name       String
+  description String
+  priceCents Int      // EUR, in cents
+  imageUrl   String?
+  category   String
+  madeIn     String   @default("France")
+  stock      Int      @default(0)
+  brandId    String
+  brand      Brand    @relation(fields: [brandId], references: [id])
+  createdAt  DateTime @default(now())
+}

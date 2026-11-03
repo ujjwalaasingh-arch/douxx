@@ -1,0 +1,13 @@
+:root { --bg:#faf7f2; --ink:#1f1b16; --muted:#6b645a; --accent:#c8553d; --card:#fff; }
+@media (prefers-color-scheme: dark) { :root { --bg:#16130f; --ink:#f3eee6; --muted:#a39b8f; --card:#211d18; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family: Georgia, "Times New Roman", serif; }
+a { color: inherit; text-decoration: none; }
+header, main { max-width: 1080px; margin: 0 auto; padding: 20px; }
+header { display:flex; justify-content:space-between; align-items:baseline; }
+.logo { font-size: 28px; letter-spacing: .02em; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:20px; }
+.card { background:var(--card); border-radius:12px; padding:16px; }
+.muted { color: var(--muted); }
+.btn { background:var(--accent); color:#fff; border:0; padding:12px 20px; border-radius:999px; font-size:16px; cursor:pointer; }
+.img { aspect-ratio: 1; background:#e9e1d3; border-radius:8px; margin-bottom:12px; object-fit:cover; width:100%; }
